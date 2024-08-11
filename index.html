@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre la Célula Animal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Descubre la Célula Animal</h1>
+        <button id="start-button">Comenzar</button>
+        <div id="game-screen" class="hidden">
+            <div id="cell-svg-container">
+                <svg id="cell-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Imagen de fondo -->
+                    <image href="celula.jpg" width="800" height="600" />
+                    
+                    <!-- Áreas poligonales con borde -->
+                    <polygon points="334,290 410,290 410,368 334,368" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="nucleus-overlay" onclick="showInfo('nucleus')"/>
+                    <polygon points="365,370 480,370 480,480 365,480" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="mitochondria-overlay" onclick="showInfo('mitochondria')"/>
+                    <!-- Añadir más áreas según sea necesario -->
+                </svg>
+            </div>
+            <div id="info-box" class="hidden"></div>
+        </div>
+        <div id="results-screen" class="hidden">
+            <h2>Resultados</h2>
+            <p id="results-summary"></p>
+            <button id="restart-button">Volver a Jugar</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
