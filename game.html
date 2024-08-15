@@ -11,10 +11,10 @@
 <body role="main">
 <!-- Pantalla Principal del Juego -->
 <div class="container-fluid">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light">
         <div class="container">
-            <button class="btn btn-secondary" id="back-to-start" aria-label="Volver a la pantalla de inicio">Inicio</button>
-            <h1 class="mx-auto">Juego</h1>
+            <button class="btn btn-info" id="back-to-start" aria-label="Volver a la pantalla de inicio">Volver</button>
+            <h1 class="mx-auto">Celula animal (Primaria)</h1>
             <button class="btn btn-info" id="help-btn" aria-label="Ayuda">Ayuda</button>
         </div>
     </nav>
@@ -32,10 +32,12 @@
                 <image href="images/celula.jpg" width="800" height="600" />
                     
                 <!-- Áreas poligonales con borde -->
-                <polygon points="334,290 410,290 410,368 334,368" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="nucleus" onclick="showInfo('nucleus')" class="hidden-border"/>
-                <polygon points="365,370 480,370 480,480 365,480" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="mitochondria" onclick="showInfo('mitochondria')" class="hidden-border"/>
-                <!-- Añadir más áreas según sea necesario -->
-                </svg>
+                <polygon points="230,170 390,170 390,326 230,326" fill="rgba(255, 0, 0, 0.0)" stroke="red" stroke-width="2" id="Núcleo" onclick="showInfo('Núcleo')" class="hidden-border"/>
+                <polygon points="480,180 535,180 535,240 480,240" fill="rgba(255, 0, 0, 0.0)" stroke="red" stroke-width="2" id="Mitocondria" onclick="showInfo('mitocondria')" class="hidden-border"/>
+                <polygon points="530,425 685,425 685,535 530,535" fill="rgba(255, 0, 0, 0.0)" stroke="red" stroke-width="2" id="Aparato de Golgi" onclick="showInfo('Aparato de Golgi')" class="hidden-border"/>
+                <polygon points="590,230 634,230 634,305 590,305" fill="rgba(255, 0, 0, 0.0)" stroke="red" stroke-width="2" id="Centriolo" onclick="showInfo('Centriolo')" class="hidden-border"/>
+                <polygon points="550,146 590,146 590,180 550,180" fill="rgba(255, 0, 0, 0.0)" stroke="red" stroke-width="2" id="Lisosoma" onclick="showInfo('Lisosoma')" class="hidden-border"/>
+            </svg>
             </div>
             <div id="info-box" class="hidden"></div>
             <div class="col-md-4 text-center d-flex justify-content-center">

@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', startGame);
 
 // Lista de organelos disponibles
-let availableOrganelles = ['nucleus', 'mitochondria'];
+let availableOrganelles = ['Núcleo', 'Mitocondria','Aparato de Golgi','Centriolo','Lisosoma'];
 let score = 0;
 
 //variables de tiempo
@@ -19,14 +19,26 @@ const maxZoomOut = 0.5; // Mínimo nivel de zoom
 
 // Información de organelos
 const organelInfo = {
-    'nucleus': {
+    'Núcleo': {
         description: 'El núcleo es el centro de control de la célula, donde se encuentra el ADN.',
         image: 'images/nucleus.jpg' // falta las imagenes
     },
-    'mitochondria': {
+    'Mitocondria': {
         description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
         image: 'images/mitochondria.jpg' 
     },
+    'Aparato de Golgi': {
+        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
+        image: 'images/mitochondria.jpg' 
+    },
+    'Centriolo': {
+        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
+        image: 'images/mitochondria.jpg' 
+    },
+    'Lisosoma': {
+        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
+        image: 'images/mitochondria.jpg' 
+    }
     // Añadir más organelos según sea necesario
 };
 
