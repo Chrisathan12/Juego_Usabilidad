@@ -45,11 +45,11 @@ box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
     margin-bottom: 8%;
     width: 75%;
     border-radius: 50px;
-    background-color: #268eae;
+    background-color: #196076;
     color: #ffffff;
     -webkit-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
--moz-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+    -moz-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+    box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
 }
 
 .instructions {
