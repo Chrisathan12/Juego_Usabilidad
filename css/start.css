@@ -7,6 +7,32 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: 'Montserrat';font-size: 16px;
+}
+
+p {
+    margin-right: 50px;
+}
+
+h1 {
+    padding-top: 2%;
+}
+
+.carousel{
+    border-radius: 20px;
+    margin: 0 10%;
+    margin-top: 5%;
+    -webkit-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+-moz-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+}
+
+.carousel-item{
+    border-radius: 20px;
+}
+
+.carousel-inner{
+    border-radius: 20px;
 }
 
 .container {
@@ -15,6 +41,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    width: 75%;
+    border-radius: 50px;
+    background-color: #268eae;
+    color: #ffffff;
+    -webkit-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+-moz-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
 }
 
 .instructions {
@@ -38,4 +73,19 @@ body {
 
 .instructions button {
     margin-top: 20px;
+    margin-bottom: 50px;
+    -webkit-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+-moz-box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+box-shadow: 10px 10px 30px -9px rgba(0,0,0,0.63);
+    background-color: #d9d9d9;
+    color: black;
+    font-weight: bolder;
+    border-radius: 30px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: #000;
+    height: 20%;
+    margin-top: 23%;
+    border-radius: 25px;
 }
