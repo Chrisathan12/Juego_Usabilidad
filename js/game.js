@@ -28,16 +28,16 @@ const organelInfo = {
         image: 'images/mitochondria.jpg' 
     },
     'Aparato de Golgi': {
-        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
-        image: 'images/mitochondria.jpg' 
+        description: 'El aparato de Golgi fabrica y empaqueta proteinas y moleculas de lipidos.',
+        image: 'images/golgi.jpg' 
     },
     'Centriolo': {
-        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
-        image: 'images/mitochondria.jpg' 
+        description: 'El centriolo organiza los microtúbulos (sistema esqueletico de la celula).',
+        image: 'images/centriolo.jpg' 
     },
     'Lisosoma': {
-        description: 'Las mitocondrias son las encargadas de producir la energía de la célula.',
-        image: 'images/mitochondria.jpg' 
+        description: 'El lisosoma comvierte enzimas que pueden descomponer elementos celulares.',
+        image: 'images/lisosoma.jpg' 
     }
     // Añadir más organelos según sea necesario
 };
