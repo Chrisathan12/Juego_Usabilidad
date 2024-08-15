@@ -3,33 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descubre la Célula Animal</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/start.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>Descubre la Célula Animal</h1>
-        <button id="start-button">Comenzar</button>
-        <div id="game-screen" class="hidden">
-            <div id="cell-svg-container">
-                <svg id="cell-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Imagen de fondo -->
-                    <image href="celula.jpg" width="800" height="600" />
-                    
-                    <!-- Áreas poligonales con borde -->
-                    <polygon points="334,290 410,290 410,368 334,368" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="nucleus-overlay" onclick="showInfo('nucleus')"/>
-                    <polygon points="365,370 480,370 480,480 365,480" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="mitochondria-overlay" onclick="showInfo('mitochondria')"/>
-                    <!-- Añadir más áreas según sea necesario -->
-                </svg>
+
+<!-- Pantalla de Inicio -->
+<div class="container">
+    <h1 class="text-center mb-5">Juego Interactivo de Célula Animal</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Carrusel de Imágenes -->
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" aria-label="Carrusel de imágenes de partes de una célula animal">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/golgi-info.png" class="d-block w-100" alt="Descripción de la primera imagen">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/mitocondria-info.png" class="d-block w-100" alt="Descripción de la segunda imagen">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/nucleo-info.png" class="d-block w-100" alt="Descripción de la tercera imagen">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
-            <div id="info-box" class="hidden"></div>
         </div>
-        <div id="results-screen" class="hidden">
-            <h2>Resultados</h2>
-            <p id="results-summary"></p>
-            <button id="restart-button">Volver a Jugar</button>
+        <div class="col-md-6 instructions">
+            <h2>Instrucciones del Juego</h2>
+            <div><p>Utiliza el cursor para señalar la parte de la celula solicitada.</p></div>
+            <div><p>Acumula aciertos antes de que el tiempo se acabe.</p></div>
+            <div><p>Acierta todas las partes correctamente y gana!</p></div>
+            <button id="start-game-btn" class="btn btn-primary btn-lg mt-4 w-50">Iniciar Juego</button>
         </div>
     </div>
-    <script src="scripts.js"></script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/start.js"></script>
 </body>
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/game.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<!-- Pantalla Principal del Juego -->
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <button class="btn btn-secondary" id="back-to-start" aria-label="Volver a la pantalla de inicio">Inicio</button>
+            <h1 class="mx-auto">Juego</h1>
+            <button class="btn btn-info" id="help-btn" aria-label="Ayuda">Ayuda</button>
+        </div>
+    </nav>
+
+    <div class="row my-4 flex-grow-1">
+        <div id="container-cell "class="d-flex flex-row flex-grow-1 justify-content-around">
+            <div class="instructions">
+                <p id="instruction-text1">Busca el:</p>
+                <p id="instruction-text2" draggable="true"></p>
+            </div>
+            <!-- Célula animal interactiva -->
+            <div id="cell-svg-container" class="interactive-cell" role="img" aria-label="Representación interactiva de una célula animal">
+                <svg id="cell-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                <!-- Imagen de fondo -->
+                <image href="images/celula.jpg" width="800" height="600" />
+                    
+                <!-- Áreas poligonales con borde -->
+                <polygon points="334,290 410,290 410,368 334,368" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="nucleus" onclick="showInfo('nucleus')" class="hidden-border"/>
+                <polygon points="365,370 480,370 480,480 365,480" fill="rgba(255, 0, 0, 0)" stroke="red" stroke-width="2" id="mitochondria" onclick="showInfo('mitochondria')" class="hidden-border"/>
+                <!-- Añadir más áreas según sea necesario -->
+                </svg>
+            </div>
+            <div id="info-box" class="hidden"></div>
+            <div class="col-md-4 text-center d-flex justify-content-center">
+                <div class="mt-4">
+                    <button id="pause-btn" class="btn btn-warning" aria-label="Pausar juego">Pausar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <div class="zoom-controls mt-3">
+            <button id="zoom-in" class="btn btn-secondary" aria-label="Aumentar zoom">Zoom +</button>
+            <button id="zoom-out" class="btn btn-secondary" aria-label="Disminuir zoom">Zoom -</button>
+        </div>
+        <div>
+            <div class="">
+                <div class="timer" aria-live="polite">Tiempo: <span id="timer">5:00</span></div>
+            </div>
+            <div class="">
+                <div class="score" aria-live="polite">Puntos: <span id="score">0</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Ayuda -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Ayuda del Juego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>El objetivo del juego es seleccionar las partes correctas de la célula en la imagen interactiva. Usa el ratón o el teclado para seleccionar y arrastrar las partes al lugar correcto. Tienes 5 minutos para completar el juego.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Buen Intento -->
+<div class="modal fade" id="tryAgainModal" tabindex="-1" aria-labelledby="tryAgainModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tryAgainModalLabel">¡Buen intento!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                La parte seleccionada no corresponde al <span id="incorrect-part"></span>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="return-btn" data-bs-dismiss="modal" aria-label="Retornar">Retornar</button>
+                <button type="button" class="btn btn-info" id="hint-btn" aria-label="Obtener pista">Pista</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Pista -->
+<div class="modal fade" id="hintModal" tabindex="-1" aria-labelledby="hintModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="hintModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-between">
+                <div id="organelle-description" class="w-50 me-3"></div>
+                <div id="organelle-image" class="w-50 text-center"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="return-to-game-btn" data-bs-dismiss="modal" aria-label="Retornar al juego">Retornar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Felicitaciones -->
+<div class="modal fade" id="congratulationsModal" tabindex="-1" aria-labelledby="congratulationsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="congratulationsModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p id="congratulations-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="continue-playing-btn" data-bs-dismiss="modal" aria-label="Continuar jugando">Continuar jugando</button>
+                <!--<button type="button" class="btn btn-info" id="learn-more-btn" aria-label="Aprender más">Aprender más</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="finalModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="finalModalLabel" aria-describedby="finalModalDescription" aria-modal="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="finalModalLabel" class="modal-title">Resultados</h5>
+        </div>
+        <div class="modal-body">
+          <p id="finalModalDescription">
+            <span id="final-time"></span><br>
+            <span id="final-score"></span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button id="playAgainBtn" class="btn btn-primary" aria-label="Seguir jugando">Seguir jugando</button>
+          <button id="exitGameBtn" class="btn btn-secondary" aria-label="Salir del juego">Salir del juego</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal de Pausa -->
+<div id="pauseModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="pauseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pauseModalLabel">Has pausado el juego</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <h6>Tiempo restante:</h6>
+              <p id="pause-time-summary">00:00</p> 
+            </div>
+            <div class="col">
+              <h6>Puntos acumulados:</h6>
+              <p id="pause-points-summary">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="resumen-btn">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal de Timeup -->
+  <div class="modal fade" id="timeUpModal" tabindex="-1" aria-labelledby="timeUpModalLabel" aria-describedby="taskSummary" aria-hidden="true" data-backdrop="static" data-keyboard="false" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="timeUpModalLabel" role="heading">¡El tiempo se ha terminado!</h5>
+            </div>
+            <div class="modal-body">
+                <p id="timeOut-score"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="continueBtn" aria-label="Seguir jugando">Seguir jugando</button>
+                <button type="button" class="btn btn-secondary" id="exitBtn" aria-label="Salir del juego">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

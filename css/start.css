@@ -1,0 +1,41 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    font-size: 1.2em;
+}
+
+.instructions h2 {
+    text-align: center; 
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.instructions div {
+    text-align: left; 
+    width: 100%; 
+    margin-bottom: 10px; 
+}
+
+.instructions button {
+    margin-top: 20px;
+}
