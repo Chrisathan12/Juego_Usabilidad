@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="css/game.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-
+<body role="main">
 <!-- Pantalla Principal del Juego -->
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
@@ -54,10 +53,10 @@
         </div>
         <div>
             <div class="">
-                <div class="timer" aria-live="polite">Tiempo: <span id="timer">5:00</span></div>
+                <div class="timer" aria-live="assertive">Tiempo: <span id="timer">5:00</span></div>
             </div>
             <div class="">
-                <div class="score" aria-live="polite">Puntos: <span id="score">0</span></div>
+                <div class="score" aria-live="assertive">Puntos: <span id="score">0</span></div>
             </div>
         </div>
     </div>
@@ -65,15 +64,15 @@
 
 
 <!-- Modal de Ayuda -->
-<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal" id="helpModal" tabindex="-1" aria-modal="true" aria-labelledby="helpModalLabel" aria-describedby="helpModalDescription" aria-hidden="true" role="dialog">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="helpModalLabel">Ayuda del Juego</h5>
+                <h5 class="modal-title" id="helpModalLabel" role="heading">Ayuda del Juego</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                <p>El objetivo del juego es seleccionar las partes correctas de la célula en la imagen interactiva. Usa el ratón o el teclado para seleccionar y arrastrar las partes al lugar correcto. Tienes 5 minutos para completar el juego.</p>
+                <p id="helpModalDescription">El objetivo del juego es seleccionar las partes correctas de la célula en la imagen interactiva. Usa el ratón para arrastrar las partes al lugar correcto de la célula animal. Tienes 5 minutos para completar el juego.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -83,11 +82,11 @@
 </div>
 
 <!-- Modal de Buen Intento -->
-<div class="modal fade" id="tryAgainModal" tabindex="-1" aria-labelledby="tryAgainModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div class="modal" id="tryAgainModal" tabindex="-1" aria-modal="true" aria-labelledby="tryAgainModalLabel1" aria-hidden="true" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="tryAgainModalLabel1">
             <div class="modal-header">
-                <h5 class="modal-title" id="tryAgainModalLabel">¡Buen intento!</h5>
+                <h5 class="modal-title" id="tryAgainModalLabel" role="heading">¡Buen intento!</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
@@ -102,11 +101,11 @@
 </div>
 
 <!-- Modal de Pista -->
-<div class="modal fade" id="hintModal" tabindex="-1" aria-labelledby="hintModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div class="modal" id="hintModal" tabindex="-1" aria-modal="true" aria-labelledby="hintModalLabel1" aria-hidden="true" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="hintModalLabel1">
             <div class="modal-header">
-                <h5 class="modal-title" id="hintModalLabel"></h5>
+                <h5 class="modal-title" id="hintModalLabel" role="heading">Organelo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body d-flex justify-content-between">
@@ -121,11 +120,11 @@
 </div>
 
 <!-- Modal de Felicitaciones -->
-<div class="modal fade" id="congratulationsModal" tabindex="-1" aria-labelledby="congratulationsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div class="modal" id="congratulationsModal" tabindex="-1"  aria-modal="true" aria-labelledby="congratulationsModalLabel1" aria-hidden="true" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="congratulationsModalLabel1">
             <div class="modal-header">
-                <h5 class="modal-title" id="congratulationsModalLabel"></h5>
+                <h5 class="modal-title" id="congratulationsModalLabel" role="heading">¡Felicitaciones! Has ganado puntos.</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
@@ -139,13 +138,13 @@
     </div>
 </div>
 
-<div id="finalModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="finalModalLabel" aria-describedby="finalModalDescription" aria-modal="true">
+<div id="finalModal" class="modal" tabindex="-1" aria-modal="true" aria-labelledby="finalModalLabel" aria-describedby="finalModalDescription" aria-modal="true" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" id="finalModalLabel" >
         <div class="modal-header">
-          <h5 id="finalModalLabel" class="modal-title">Resultados</h5>
+          <h5 class="modal-title" role="heading">Resultados</h5>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" tabindex="0">
           <p id="finalModalDescription">
             <span id="final-time"></span><br>
             <span id="final-score"></span>
@@ -160,14 +159,14 @@
   </div>
 
 <!-- Modal de Pausa -->
-<div id="pauseModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="pauseModalLabel" aria-hidden="true">
+<div id="pauseModal" class="modal" tabindex="-1" aria-modal="true" aria-labelledby="pauseModalLabel" aria-hidden="true" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" id="pauseModalLabel">
         <div class="modal-header">
-          <h5 class="modal-title" id="pauseModalLabel">Has pausado el juego</h5>
+          <h5 class="modal-title"  role="heading">Has pausado el juego</h5>
         </div>
-        <div class="modal-body">
-          <div class="row">
+        <div class="modal-body" >
+          <div class="row" tabindex="0">
             <div class="col">
               <h6>Tiempo restante:</h6>
               <p id="pause-time-summary">00:00</p> 
@@ -185,11 +184,11 @@
     </div>
   </div>
 <!-- Modal de Timeup -->
-  <div class="modal fade" id="timeUpModal" tabindex="-1" aria-labelledby="timeUpModalLabel" aria-describedby="taskSummary" aria-hidden="true" data-backdrop="static" data-keyboard="false" role="dialog">
+  <div class="modal" id="timeUpModal" tabindex="-1" aria-modal="true" aria-labelledby="timeUpModalLabel"  aria-hidden="true" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="timeUpModalLabel">
             <div class="modal-header">
-                <h5 class="modal-title" id="timeUpModalLabel" role="heading">¡El tiempo se ha terminado!</h5>
+                <h5 class="modal-title" role="heading">¡El tiempo se ha terminado!</h5>
             </div>
             <div class="modal-body">
                 <p id="timeOut-score"></p>
